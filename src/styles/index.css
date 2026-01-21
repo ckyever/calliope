@@ -82,6 +82,7 @@ h6 {
   --main-background-colour: #14181c;
   --main-text-colour: #99aabb;
   --header-text-colour: #eceff1;
+  --highlight-text-colour: #ffffff;
 }
 
 html {

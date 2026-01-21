@@ -8,9 +8,34 @@
 
 .container {
   display: flex;
+  justify-content: space-between;
+  width: 1000px;
+}
+
+.logo {
+  display: flex;
   gap: 12px;
 }
 
 .header-text {
   color: var(--header-text-colour);
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.nav-links li:hover {
+  color: var(--highlight-text-colour);
+  cursor: pointer;
 }
