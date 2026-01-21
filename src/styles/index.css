@@ -77,3 +77,14 @@ h6 {
 }
 
 /* End of CSS reset */
+
+:root {
+  --main-background-colour: #14181c;
+  --main-text-colour: #99aabb;
+  --header-text-colour: #eceff1;
+}
+
+html {
+  background-color: var(--main-background-colour);
+  color: var(--main-text-colour);
+}
