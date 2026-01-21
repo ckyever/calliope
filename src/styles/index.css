@@ -85,7 +85,8 @@ h6 {
 }
 
 html {
-  background-color: var(--main-background-colour);
+  background: var(--main-background-colour) url("../assets/background.webp")
+    repeat-x;
   color: var(--main-text-colour);
   font-family: "Montserrat";
 }
