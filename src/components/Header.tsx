@@ -3,6 +3,12 @@ import styles from "../styles/Header.module.css";
 import logo from "../assets/logo.png";
 
 function Header() {
+  const AUTH_URL = import.meta.env.VITE_AUTH_URL;
+
+  if (!AUTH_URL) {
+    throw Error("Missing environment variable - auth URL");
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -12,8 +18,9 @@ function Header() {
         </div>
         <nav className={styles.navbar}>
           <ul className={styles["nav-links"]}>
-            <li>SIGN IN</li>
-            <li>CREATE ACCOUNT</li>
+            <li>
+              <a href={AUTH_URL}>SIGN IN</a>
+            </li>
           </ul>
         </nav>
       </div>
