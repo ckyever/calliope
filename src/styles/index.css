@@ -91,3 +91,8 @@ html {
   color: var(--main-text-colour);
   font-family: "Montserrat";
 }
+
+a {
+  text-decoration: none;
+  color: var(--main-text-colour);
+}
