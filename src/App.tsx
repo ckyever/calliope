@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Header />
-      <div>Home page</div>
+      <div>Dashboard</div>
     </>
   );
 }
