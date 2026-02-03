@@ -2,6 +2,8 @@ import { useSearchParams } from "react-router";
 
 import Header from "./components/Header";
 
+import styles from "./styles/App.module.css";
+
 function App() {
   const [searchParams] = useSearchParams();
   const callbackToken = searchParams.get("token");
@@ -13,7 +15,7 @@ function App() {
   return (
     <>
       <Header />
-      <div>Dashboard</div>
+      <div className={styles["main-content"]}>Dashboard</div>
     </>
   );
 }
