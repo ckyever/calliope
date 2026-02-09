@@ -1,16 +1,12 @@
 import { Link } from "react-router";
 
+import ENVIRONMENT_VARIABLES from "../environmentVariables";
+
 import styles from "../styles/Header.module.css";
 
 import logo from "../assets/logo.png";
 
 function Header() {
-  const AUTH_URL = import.meta.env.VITE_AUTH_URL;
-
-  if (!AUTH_URL) {
-    throw Error("Missing environment variable - auth URL");
-  }
-
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -23,7 +19,7 @@ function Header() {
         <nav className={styles.navbar}>
           <ul className={styles["nav-links"]}>
             <li>
-              <a href={AUTH_URL}>SIGN IN</a>
+              <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>SIGN IN</a>
             </li>
           </ul>
         </nav>
