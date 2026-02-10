@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header displayName={displayName} />
       <div className={styles["main-content"]}>Welcome {displayName}</div>
     </>
   );
