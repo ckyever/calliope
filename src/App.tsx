@@ -6,7 +6,9 @@ import Header from "./components/Header";
 import styles from "./styles/App.module.css";
 
 function App() {
-  const [displayName, setDisplayName] = useState("");
+  const [displayName, setDisplayName] = useState(
+    localStorage.getItem("display_name"),
+  );
 
   const [searchParams] = useSearchParams();
   const callbackToken = searchParams.get("token");
@@ -29,6 +31,7 @@ function App() {
         );
         const data = await response.json();
         setDisplayName(data.user.displayName);
+        localStorage.setItem("display_name", data.user.displayName);
       } catch (error) {
         console.error(error);
       }
