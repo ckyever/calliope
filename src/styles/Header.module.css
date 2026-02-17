@@ -39,3 +39,7 @@
   color: var(--highlight-text-colour);
   cursor: pointer;
 }
+
+.sign-out {
+  cursor: pointer;
+}

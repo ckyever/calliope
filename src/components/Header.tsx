@@ -1,16 +1,15 @@
 import { Link } from "react-router";
 
 import ENVIRONMENT_VARIABLES from "../environmentVariables";
-
 import styles from "../styles/Header.module.css";
-
 import logo from "../assets/logo.png";
 
 interface HeaderProps {
   displayName: string | null;
+  signOut: () => void;
 }
 
-function Header({ displayName }: HeaderProps) {
+function Header({ displayName, signOut }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -28,7 +27,13 @@ function Header({ displayName }: HeaderProps) {
               </li>
             ) : undefined}
             <li>
-              <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>SIGN IN</a>
+              {displayName ? (
+                <span className={styles["sign-out"]} onClick={signOut}>
+                  SIGN OUT
+                </span>
+              ) : (
+                <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>SIGN IN</a>
+              )}
             </li>
           </ul>
         </nav>

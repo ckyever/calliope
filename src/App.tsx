@@ -2,20 +2,28 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 
 import ENVIRONMENT_VARIABLES from "./environmentVariables";
+import * as LOCAL_STORAGE_KEYS from "./localStorageKeys.ts";
 import Header from "./components/Header";
 import styles from "./styles/App.module.css";
 
 function App() {
+  const [token, setToken] = useState(
+    localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN),
+  );
   const [displayName, setDisplayName] = useState(
-    localStorage.getItem("display_name"),
+    localStorage.getItem(LOCAL_STORAGE_KEYS.DISPLAY_NAME),
   );
 
   const [searchParams] = useSearchParams();
-  const callbackToken = searchParams.get("token");
+  const callbackToken = searchParams.get(LOCAL_STORAGE_KEYS.TOKEN);
+
+  useEffect(() => {
+    setToken(callbackToken);
+  }, [callbackToken]);
 
   useEffect(() => {
     if (!callbackToken) return;
-    localStorage.setItem("token", callbackToken);
+    localStorage.setItem(LOCAL_STORAGE_KEYS.TOKEN, callbackToken);
 
     const fetchProfile = async () => {
       try {
@@ -31,7 +39,10 @@ function App() {
         );
         const data = await response.json();
         setDisplayName(data.user.displayName);
-        localStorage.setItem("display_name", data.user.displayName);
+        localStorage.setItem(
+          LOCAL_STORAGE_KEYS.DISPLAY_NAME,
+          data.user.displayName,
+        );
       } catch (error) {
         console.error(error);
       }
@@ -39,10 +50,19 @@ function App() {
     fetchProfile();
   }, [callbackToken]);
 
+  const signOut = () => {
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.TOKEN);
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.DISPLAY_NAME);
+    setToken("");
+    setDisplayName("");
+  };
+
   return (
     <>
-      <Header displayName={displayName} />
-      <div className={styles["main-content"]}>Welcome {displayName}</div>
+      <Header displayName={displayName} signOut={signOut} />
+      {displayName && (
+        <div className={styles["main-content"]}>Welcome {displayName}</div>
+      )}
     </>
   );
 }
