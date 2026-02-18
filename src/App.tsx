@@ -28,7 +28,7 @@ function App() {
     const fetchProfile = async () => {
       try {
         const response = await fetch(
-          `${ENVIRONMENT_VARIABLES.BACKEND_API_URL}/user`,
+          `${ENVIRONMENT_VARIABLES.BACKEND_API_URL}/users/me`,
           {
             method: "GET",
             headers: {
