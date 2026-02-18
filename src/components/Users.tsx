@@ -1,7 +1,7 @@
 function Users() {
   return (
     <>
-      <h2>Muses</h2>
+      <h2>Musers</h2>
     </>
   );
 }

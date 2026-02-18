@@ -9,7 +9,7 @@ const routes = [
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/muses", element: <Users /> },
+      { path: "/musers", element: <Users /> },
     ],
     errorElement: <ErrorPage />,
   },
