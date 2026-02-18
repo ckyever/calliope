@@ -23,7 +23,7 @@ function Header({ displayName, signOut }: HeaderProps) {
           <ul className={styles["nav-links"]}>
             {displayName ? (
               <li>
-                <a href="/">{displayName}</a>
+                <Link to="/">{displayName}</Link>
               </li>
             ) : undefined}
             <li>
