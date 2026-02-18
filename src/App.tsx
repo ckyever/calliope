@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { Outlet, useSearchParams } from "react-router";
 
 import ENVIRONMENT_VARIABLES from "./environmentVariables";
 import * as LOCAL_STORAGE_KEYS from "./localStorageKeys.ts";
@@ -60,9 +60,7 @@ function App() {
   return (
     <>
       <Header displayName={displayName} signOut={signOut} />
-      {displayName && (
-        <div className={styles["main-content"]}>Welcome {displayName}</div>
-      )}
+      <Outlet context={{ displayName }} />
     </>
   );
 }
