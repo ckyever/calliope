@@ -27,6 +27,9 @@ function Header({ displayName, signOut }: HeaderProps) {
               </li>
             ) : undefined}
             <li>
+              <Link to="musers">MUSERS</Link>
+            </li>
+            <li>
               {displayName ? (
                 <span className={styles["sign-out"]} onClick={signOut}>
                   SIGN OUT
