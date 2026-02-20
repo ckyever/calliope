@@ -61,7 +61,7 @@ function App() {
   return (
     <>
       <Header displayName={displayName} signOut={signOut} />
-      <Outlet context={{ token } as AppContext} />
+      <Outlet context={{ token, displayName } as AppContext} />
     </>
   );
 }
