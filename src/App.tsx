@@ -19,12 +19,13 @@ function App() {
   const callbackToken = searchParams.get(LOCAL_STORAGE_KEYS.TOKEN);
 
   useEffect(() => {
-    setToken(callbackToken);
-  }, [callbackToken]);
-
-  useEffect(() => {
     if (!callbackToken) return;
-    localStorage.setItem(LOCAL_STORAGE_KEYS.TOKEN, callbackToken);
+
+    const saveToken = async () => {
+      setToken(callbackToken);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.TOKEN, callbackToken);
+    };
+    saveToken();
 
     const fetchProfile = async () => {
       try {
