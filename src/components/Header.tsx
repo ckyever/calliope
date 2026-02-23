@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import ENVIRONMENT_VARIABLES from "../environmentVariables";
+import SignIn from "./SignIn";
 import styles from "../styles/Header.module.css";
 import logo from "../assets/logo.png";
 
@@ -35,7 +35,7 @@ function Header({ displayName, signOut }: HeaderProps) {
                   SIGN OUT
                 </span>
               ) : (
-                <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>SIGN IN</a>
+                <SignIn />
               )}
             </li>
           </ul>
