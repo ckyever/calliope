@@ -7,11 +7,10 @@ function SignIn() {
   return (
     <>
       <button onClick={() => setOpenModal(true)}>SIGN IN</button>
-      {openModal && (
-        <dialog open>
-          <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>Continue with Spotify</a>
-        </dialog>
-      )}
+      <dialog open={openModal}>
+        <button onClick={() => setOpenModal(false)}>X</button>
+        <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>Continue with Spotify</a>
+      </dialog>
     </>
   );
 }
