@@ -1,0 +1,7 @@
+.sign-in-dialog {
+  background-color: var(--main-background-colour);
+  border: none;
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+}
