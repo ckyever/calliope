@@ -2,6 +2,9 @@
   background-color: var(--main-background-colour);
   border: none;
   padding: 20px;
+}
+
+.sign-in-container {
   display: flex;
   gap: 8px;
 }
