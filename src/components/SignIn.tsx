@@ -20,7 +20,12 @@ function SignIn() {
 
   return (
     <>
-      <button onClick={() => setOpenModal(true)}>SIGN IN</button>
+      <button
+        className={styles["sign-in-button"]}
+        onClick={() => setOpenModal(true)}
+      >
+        SIGN IN
+      </button>
       <dialog
         ref={dialogRef}
         className={styles["sign-in-dialog"]}
