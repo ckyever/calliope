@@ -21,11 +21,11 @@ function Header({ displayName, signOut }: HeaderProps) {
         </Link>
         <nav className={styles.navbar}>
           <ul className={styles["nav-links"]}>
-            {displayName ? (
+            {displayName && (
               <li>
                 <Link to="/">{displayName}</Link>
               </li>
-            ) : undefined}
+            )}
             <li>
               {displayName ? (
                 <span className={styles["sign-out"]} onClick={signOut}>
@@ -35,6 +35,11 @@ function Header({ displayName, signOut }: HeaderProps) {
                 <SignIn />
               )}
             </li>
+            {!displayName && (
+              <li>
+                <Link to="createAccount">CREATE ACCOUNT</Link>
+              </li>
+            )}
             <li>
               <Link to="musers">MUSERS</Link>
             </li>
