@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import CloseButton from "../components/CloseButton";
+
 import ENVIRONMENT_VARIABLES from "../environmentVariables";
 import styles from "../styles/SignIn.module.css";
 
@@ -32,7 +34,12 @@ function SignIn() {
         onClose={() => setOpenModal(false)}
       >
         <div className={styles["sign-in-container"]}>
-          <button onClick={() => setOpenModal(false)}>X</button>
+          <div className={styles["close-button"]}>
+            <CloseButton
+              onClick={() => setOpenModal(false)}
+              hexColour="#344354"
+            />
+          </div>
           <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>Continue with Spotify</a>
         </div>
       </dialog>
