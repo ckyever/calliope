@@ -40,7 +40,12 @@ function SignIn() {
               hexColour="#344354"
             />
           </div>
-          <a href={ENVIRONMENT_VARIABLES.AUTH_URL}>Continue with Spotify</a>
+          <a
+            className={styles["auth-button"]}
+            href={ENVIRONMENT_VARIABLES.AUTH_URL}
+          >
+            Continue with Spotify
+          </a>
         </div>
       </dialog>
     </>
