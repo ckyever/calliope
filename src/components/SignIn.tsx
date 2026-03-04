@@ -37,7 +37,7 @@ function SignIn() {
           <div className={styles["close-button"]}>
             <CloseButton
               onClick={() => setOpenModal(false)}
-              hexColour="#344354"
+              hexColour="#778899"
             />
           </div>
           <a
