@@ -5,6 +5,7 @@ function CreateAccount() {
   return (
     <PopUp buttonTitle="CREATE ACCOUNT">
       <div className={styles["container"]}>
+        <h2>Join Calliope</h2>
         <form className={styles["auth-form"]}>
           <label htmlFor="username">Username</label>
           <input id="username" type="text"></input>

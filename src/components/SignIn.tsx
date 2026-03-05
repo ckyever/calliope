@@ -6,6 +6,7 @@ function SignIn() {
   return (
     <PopUp buttonTitle="SIGN IN">
       <div className={styles["container"]}>
+        <h2>Calliope</h2>
         <form className={styles["auth-form"]}>
           <label htmlFor="username">Username</label>
           <input id="username" type="text"></input>
