@@ -6,10 +6,11 @@ import CloseButton from "./CloseButton";
 import styles from "../styles/PopUp.module.css";
 
 interface PopUpProps {
+  buttonTitle: string;
   children: ReactNode;
 }
 
-function PopUp({ children }: PopUpProps) {
+function PopUp({ buttonTitle, children }: PopUpProps) {
   const [openModal, setOpenModal] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -30,7 +31,7 @@ function PopUp({ children }: PopUpProps) {
         className={styles["popup-button"]}
         onClick={() => setOpenModal(true)}
       >
-        SIGN IN
+        {buttonTitle}
       </button>
       <dialog
         ref={dialogRef}

@@ -4,7 +4,7 @@ import styles from "../styles/SignIn.module.css";
 
 function SignIn() {
   return (
-    <PopUp>
+    <PopUp buttonTitle="SIGN IN">
       <a
         className={styles["auth-button"]}
         href={ENVIRONMENT_VARIABLES.AUTH_URL}

@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 
+import CreateAccount from "./CreateAccount";
 import SignIn from "./SignIn";
 import styles from "../styles/Header.module.css";
 import logo from "../assets/logo.png";
@@ -37,7 +38,7 @@ function Header({ displayName, signOut }: HeaderProps) {
             </li>
             {!displayName && (
               <li>
-                <Link to="createAccount">CREATE ACCOUNT</Link>
+                <CreateAccount />
               </li>
             )}
             <li>
