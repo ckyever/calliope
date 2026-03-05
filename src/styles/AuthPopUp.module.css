@@ -4,6 +4,11 @@
   gap: 20px;
 }
 
+.title {
+  color: var(--main-text-colour);
+  font-weight: 400;
+}
+
 .auth-form {
   color: white;
   width: 400px;

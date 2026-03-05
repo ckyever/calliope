@@ -5,7 +5,7 @@ function CreateAccount() {
   return (
     <PopUp buttonTitle="CREATE ACCOUNT">
       <div className={styles["container"]}>
-        <h2>Join Calliope</h2>
+        <h2 className={styles.title}>Join Calliope</h2>
         <form className={styles["auth-form"]}>
           <label htmlFor="username">Username</label>
           <input id="username" type="text"></input>
@@ -13,7 +13,7 @@ function CreateAccount() {
           <input id="password" type="password"></input>
         </form>
         <button type="submit" className={styles["auth-button"]}>
-          SIGN UP
+          Sign Up
         </button>
       </div>
     </PopUp>
