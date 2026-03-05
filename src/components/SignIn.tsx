@@ -1,6 +1,6 @@
 import ENVIRONMENT_VARIABLES from "../environmentVariables";
 import PopUp from "./PopUp";
-import styles from "../styles/SignIn.module.css";
+import styles from "../styles/AuthPopUp.module.css";
 
 function SignIn() {
   return (

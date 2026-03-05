@@ -1,0 +1,27 @@
+.create-account {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-form {
+  color: white;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-form input {
+  padding: 6px;
+}
+
+.auth-button {
+  align-self: flex-start;
+  background-color: var(--accent-colour);
+  color: black;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
