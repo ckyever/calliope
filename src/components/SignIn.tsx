@@ -5,12 +5,25 @@ import styles from "../styles/AuthPopUp.module.css";
 function SignIn() {
   return (
     <PopUp buttonTitle="SIGN IN">
-      <a
-        className={styles["auth-button"]}
-        href={ENVIRONMENT_VARIABLES.AUTH_URL}
-      >
-        Continue with Spotify
-      </a>
+      <div className={styles["container"]}>
+        <form className={styles["auth-form"]}>
+          <label htmlFor="username">Username</label>
+          <input id="username" type="text"></input>
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password"></input>
+        </form>
+        <div className={styles["button-container"]}>
+          <button type="submit" className={styles["auth-button"]}>
+            SIGN IN
+          </button>
+          <a
+            className={styles["auth-button"]}
+            href={ENVIRONMENT_VARIABLES.AUTH_URL}
+          >
+            Continue with Spotify
+          </a>
+        </div>
+      </div>
     </PopUp>
   );
 }
