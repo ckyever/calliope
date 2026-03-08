@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router";
-
 import ENVIRONMENT_VARIABLES from "../environmentVariables";
-
-import type { AppContext } from "../types/outletContext.ts";
+import { useEffect, useState } from "react";
 import type { User as UserInfo } from "../types/User.ts";
 
 function Users() {
