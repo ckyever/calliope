@@ -14,6 +14,9 @@ function App() {
   const [displayName, setDisplayName] = useState(
     localStorage.getItem(LOCAL_STORAGE_KEYS.DISPLAY_NAME),
   );
+  const [currentUserId, setCurrentUserId] = useState<number | null>(
+    Number(localStorage.getItem(LOCAL_STORAGE_KEYS.USER_ID)),
+  );
 
   const [searchParams] = useSearchParams();
   const callbackToken = searchParams.get(LOCAL_STORAGE_KEYS.TOKEN);
@@ -40,7 +43,9 @@ function App() {
           },
         );
         const data = await response.json();
+        setCurrentUserId(data.user.id);
         setDisplayName(data.user.displayName);
+        localStorage.setItem(LOCAL_STORAGE_KEYS.USER_ID, data.user.id);
         localStorage.setItem(
           LOCAL_STORAGE_KEYS.DISPLAY_NAME,
           data.user.displayName,
@@ -55,14 +60,16 @@ function App() {
   const signOut = () => {
     localStorage.removeItem(LOCAL_STORAGE_KEYS.TOKEN);
     localStorage.removeItem(LOCAL_STORAGE_KEYS.DISPLAY_NAME);
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.USER_ID);
     setToken("");
     setDisplayName("");
+    setCurrentUserId(null);
   };
 
   return (
     <>
       <Header displayName={displayName} signOut={signOut} />
-      <Outlet context={{ token, displayName } as AppContext} />
+      <Outlet context={{ token, displayName, currentUserId } as AppContext} />
     </>
   );
 }
