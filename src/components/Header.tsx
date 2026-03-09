@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import SignIn from "./SignIn";
+import AuthPopUp from "./AuthPopUp";
 import styles from "../styles/Header.module.css";
 import logo from "../assets/logo.png";
 
@@ -32,12 +32,12 @@ function Header({ displayName, signOut }: HeaderProps) {
                   SIGN OUT
                 </span>
               ) : (
-                <SignIn isCreateAccount={false} />
+                <AuthPopUp isCreateAccount={false} />
               )}
             </li>
             {!displayName && (
               <li>
-                <SignIn isCreateAccount={true} />
+                <AuthPopUp isCreateAccount={true} />
               </li>
             )}
             <li>
