@@ -16,29 +16,33 @@ function SignIn({ isCreateAccount }: SignIn) {
   const handleSignUp = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const result = await fetch(
-      `${ENVIRONMENT_VARIABLES.BACKEND_API_URL}/auth/signup`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    if (isCreateAccount) {
+      const result = await fetch(
+        `${ENVIRONMENT_VARIABLES.BACKEND_API_URL}/auth/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
         },
-        body: JSON.stringify({ username, password }),
-      },
-    );
+      );
 
-    const data = await result.json();
-    if (result.ok) {
-      console.log("CKYTODO: Close the dialog");
-    } else {
-      setErrorMessages(["Unable to create an account", data.message]);
+      const data = await result.json();
+      if (result.ok) {
+        console.log("CKYTODO: Close the dialog");
+      } else {
+        setErrorMessages(["Unable to create an account", data.message]);
+      }
     }
   };
 
   return (
-    <PopUp buttonTitle="SIGN IN">
+    <PopUp buttonTitle={isCreateAccount ? "CREATE ACCOUNT" : "SIGN IN"}>
       <div className={styles["container"]}>
-        <h2 className={styles.title}>Calliope</h2>
+        <h2 className={styles.title}>
+          {isCreateAccount ? "Join Calliope" : "Calliope"}
+        </h2>
         <form
           className={styles["auth-form"]}
           onSubmit={(event) => handleSignUp(event)}
@@ -61,14 +65,16 @@ function SignIn({ isCreateAccount }: SignIn) {
           </ul>
           <div className={styles["button-container"]}>
             <button type="submit" className={styles["auth-button"]}>
-              Sign In
+              {isCreateAccount ? "Sign Up" : "Sign In"}
             </button>
-            <a
-              className={styles["auth-button"]}
-              href={ENVIRONMENT_VARIABLES.AUTH_URL}
-            >
-              Continue with Spotify
-            </a>
+            {!isCreateAccount && (
+              <a
+                className={styles["auth-button"]}
+                href={ENVIRONMENT_VARIABLES.AUTH_URL}
+              >
+                Continue with Spotify
+              </a>
+            )}
           </div>
         </form>
       </div>
