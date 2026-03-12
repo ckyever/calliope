@@ -37,5 +37,5 @@
 }
 
 .auth-button:hover {
-  color: white;
+  background-color: var(--accent-colour-hover);
 }
