@@ -23,10 +23,12 @@ function Header({ displayName, signOut }: HeaderProps) {
           <ul className={styles["nav-links"]}>
             {displayName && (
               <li>
-                <Link to="/">{displayName}</Link>
+                <Link className={styles["nav-link-item"]} to="/">
+                  {displayName}
+                </Link>
               </li>
             )}
-            <li>
+            <li className={styles["nav-link-item"]}>
               {displayName ? (
                 <span className={styles["sign-out"]} onClick={signOut}>
                   SIGN OUT
@@ -36,12 +38,14 @@ function Header({ displayName, signOut }: HeaderProps) {
               )}
             </li>
             {!displayName && (
-              <li>
+              <li className={styles["nav-link-item"]}>
                 <AuthPopUp isCreateAccount={true} />
               </li>
             )}
-            <li>
-              <Link to="musers">MUSERS</Link>
+            <li className={styles["nav-link-item"]}>
+              <Link className={styles["nav-link-item"]} to="musers">
+                MUSERS
+              </Link>
             </li>
           </ul>
         </nav>

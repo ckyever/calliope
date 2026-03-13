@@ -35,8 +35,7 @@
   font-weight: 600;
 }
 
-.nav-links a:hover,
-.nav-links li:hover {
+.nav-link-item:hover {
   color: var(--highlight-text-colour);
   cursor: pointer;
 }
