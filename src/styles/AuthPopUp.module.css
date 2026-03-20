@@ -19,6 +19,7 @@
 
 .auth-form input {
   padding: 6px;
+  font-weight: 500;
 }
 
 .button-container {
