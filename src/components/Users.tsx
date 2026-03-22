@@ -30,7 +30,14 @@ function Users() {
       <ul>
         {users.map((userInfo) => {
           if (userInfo.id != currentUserId)
-            return <li key={userInfo.id}>{userInfo.displayName}</li>;
+            return (
+              <li key={userInfo.id}>
+                <div>
+                  <span>{userInfo.displayName}</span>
+                  {currentUserId ? <button>Follow</button> : undefined}
+                </div>
+              </li>
+            );
         })}
       </ul>
     </>
