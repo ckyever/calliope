@@ -6,6 +6,7 @@ import * as LOCAL_STORAGE_KEYS from "./localStorageKeys.ts";
 
 import type { AppContext } from "./types/outletContext.ts";
 import Header from "./components/Header";
+import styles from "./styles/App.module.css";
 
 function App() {
   const [token, setToken] = useState(
@@ -69,7 +70,9 @@ function App() {
   return (
     <>
       <Header displayName={displayName} signOut={signOut} />
-      <Outlet context={{ token, displayName, currentUserId } as AppContext} />
+      <div className={styles.content}>
+        <Outlet context={{ token, displayName, currentUserId } as AppContext} />
+      </div>
     </>
   );
 }
