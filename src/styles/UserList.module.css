@@ -1,0 +1,14 @@
+.user-list {
+  margin: 12px;
+  width: 400px;
+  list-style: none;
+}
+
+.user-list-item {
+  padding: 12px;
+  border-bottom: 2px solid var(--main-border-colour);
+}
+
+.user-list-item:first-child {
+  border-top: 2px solid var(--main-border-colour);
+}

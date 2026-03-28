@@ -7,6 +7,8 @@ import type { User as UserInfo } from "../types/User.ts";
 
 import UserItem from "./UserItem.tsx";
 
+import styles from "../styles/UserList.module.css";
+
 function UserList() {
   const [users, setUsers] = useState<UserInfo[]>([]);
   const { currentUserId } = useOutletContext<AppContext>();
@@ -29,11 +31,11 @@ function UserList() {
   return (
     <>
       <h2>Musers</h2>
-      <ul>
+      <ul className={styles["user-list"]}>
         {users.map((userInfo) => {
           if (userInfo.id != currentUserId)
             return (
-              <li key={userInfo.id}>
+              <li className={styles["user-list-item"]} key={userInfo.id}>
                 <UserItem userInfo={userInfo} />
               </li>
             );

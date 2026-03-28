@@ -5,6 +5,8 @@ import type { AppContext } from "../types/outletContext.ts";
 import ENVIRONMENT_VARIABLES from "../environmentVariables";
 import type { User as UserInfo } from "../types/User.ts";
 
+import styles from "../styles/UserItem.module.css";
+
 interface UserItemProps {
   userInfo: UserInfo;
 }
@@ -41,9 +43,12 @@ function UserItem({ userInfo }: UserItemProps) {
   };
 
   return (
-    <div>
+    <div className={styles["user-item"]}>
       <span>{userInfo.displayName}</span>
-      <button onClick={() => handleFollow(userInfo.id)}>
+      <button
+        className={styles["follow-button"]}
+        onClick={() => handleFollow(userInfo.id)}
+      >
         {isCurrentUserFollowing ? "Unfollow" : "Follow"}
       </button>
     </div>
