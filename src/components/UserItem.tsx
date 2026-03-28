@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useOutletContext } from "react-router";
 
 import type { AppContext } from "../types/outletContext.ts";
@@ -20,15 +20,21 @@ function UserItem({ userInfo }: UserItemProps) {
       const response = await fetch(
         `${ENVIRONMENT_VARIABLES.BACKEND_API_URL}/users/follow/${userIdToFollow}`,
         {
-          method: "POST",
+          method: isCurrentUserFollowing ? "DELETE" : "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         },
       );
-      const data = await response.json();
-      console.log(data);
+
+      if (!response.ok) {
+        throw new Error(
+          `Unable to ${isCurrentUserFollowing ? "unfollow" : "follow"} the user "${userInfo.username}"`,
+        );
+      }
+
+      setIsCurrentUserFollowing((prev) => !prev);
     } catch (error) {
       console.error(error);
     }
@@ -37,13 +43,9 @@ function UserItem({ userInfo }: UserItemProps) {
   return (
     <div>
       <span>{userInfo.displayName}</span>
-      {userInfo.followedBy.some((user) => user.id == currentUserId) ? (
-        currentUserId ? (
-          <button>Unfollow</button>
-        ) : undefined
-      ) : currentUserId ? (
-        <button onClick={() => handleFollow(userInfo.id)}>Follow</button>
-      ) : undefined}
+      <button onClick={() => handleFollow(userInfo.id)}>
+        {isCurrentUserFollowing ? "Unfollow" : "Follow"}
+      </button>
     </div>
   );
 }
