@@ -1,5 +1,8 @@
 export interface User {
   id: number;
-  spotifyId: string;
-  displayName: string;
+  username: string | null;
+  displayName: string | null;
+  followedBy: {
+    id: number;
+  }[];
 }

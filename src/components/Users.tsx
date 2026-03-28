@@ -7,7 +7,7 @@ import type { User as UserInfo } from "../types/User.ts";
 
 function Users() {
   const [users, setUsers] = useState<UserInfo[]>([]);
-  const { currentUserId } = useOutletContext<AppContext>();
+  const { token, currentUserId } = useOutletContext<AppContext>();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -24,6 +24,25 @@ function Users() {
     fetchUsers();
   }, []);
 
+  const handleFollow = async (userIdToFollow: number) => {
+    try {
+      const response = await fetch(
+        `${ENVIRONMENT_VARIABLES.BACKEND_API_URL}/users/follow/${userIdToFollow}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <h2>Musers</h2>
@@ -34,7 +53,17 @@ function Users() {
               <li key={userInfo.id}>
                 <div>
                   <span>{userInfo.displayName}</span>
-                  {currentUserId ? <button>Follow</button> : undefined}
+                  {userInfo.followedBy.some(
+                    (user) => user.id == currentUserId,
+                  ) ? (
+                    currentUserId ? (
+                      <button>Unfollow</button>
+                    ) : undefined
+                  ) : currentUserId ? (
+                    <button onClick={() => handleFollow(userInfo.id)}>
+                      Follow
+                    </button>
+                  ) : undefined}
                 </div>
               </li>
             );
