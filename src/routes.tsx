@@ -1,6 +1,6 @@
 import App from "./App";
 import Home from "./components/Home";
-import Users from "./components/Users";
+import UserList from "./components/UserList";
 import ErrorPage from "./components/ErrorPage";
 
 const routes = [
@@ -9,7 +9,7 @@ const routes = [
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/musers", element: <Users /> },
+      { path: "/musers", element: <UserList /> },
     ],
     errorElement: <ErrorPage />,
   },
