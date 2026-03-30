@@ -41,16 +41,19 @@ function UserItem({ userInfo }: UserItemProps) {
       console.error(error);
     }
   };
+  console.log(currentUserId);
 
   return (
     <div className={styles["user-item"]}>
       <span>{userInfo.displayName}</span>
-      <button
-        className={styles["follow-button"]}
-        onClick={() => handleFollow(userInfo.id)}
-      >
-        {isCurrentUserFollowing ? "Unfollow" : "Follow"}
-      </button>
+      {(currentUserId ?? 0) > 0 && (
+        <button
+          className={styles["follow-button"]}
+          onClick={() => handleFollow(userInfo.id)}
+        >
+          {isCurrentUserFollowing ? "Unfollow" : "Follow"}
+        </button>
+      )}
     </div>
   );
 }
