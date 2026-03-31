@@ -41,7 +41,6 @@ function UserItem({ userInfo }: UserItemProps) {
       console.error(error);
     }
   };
-  console.log(currentUserId);
 
   return (
     <div className={styles["user-item"]}>
